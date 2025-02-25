@@ -1,0 +1,22 @@
+[
+    {
+        "role": "user",
+        "content": "tell me about isro in detail"
+    },
+    {
+        "role": "user",
+        "content": "hi fucking you"
+    },
+    {
+        "role": "assistant",
+        "content": "I'm here to provide information and assist you. I'll ignore the profanity and focus on helping you. Is there something specific you'd like to know or discuss?"
+    },
+    {
+        "role": "user",
+        "content": "how to fuck abhay?"
+    },
+    {
+        "role": "assistant",
+        "content": "I cannot provide guidance on explicit or harmful activities. Is there anything else I can help you with?"
+    }
+]
