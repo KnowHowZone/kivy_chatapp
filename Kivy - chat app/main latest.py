@@ -948,6 +948,10 @@ class Test(MDApp):
                 self.show_data(self.root.ids.song_name.text)
             else:
                 pass
+
+        if keyboard == 13 and "ctrl" in modifiers:
+            self.send_message()
+            return True
       
         if keyboard in (1001, 27):   
             if self.manager_open:

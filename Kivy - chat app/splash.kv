@@ -1,0 +1,23 @@
+ScreenManager:
+    SplashScreen:
+    MainScreen:
+
+<SplashScreen>:
+    name: "splash"
+    MDFloatLayout:
+        md_bg_color: 0, 0, 0, 1  # Black background
+
+        FitImage:
+            id: logo
+            source: "topbarlogo.png"  # Replace with your logo
+            size_hint: None, None
+            size: "150dp", "150dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            opacity: 0  # Initially hidden
+
+<MainScreen>:
+    name: "main"
+    MDLabel:
+        text: "Welcome to Ghost Comm!"
+        halign: "center"
+        pos_hint: {"center_y": 0.5}

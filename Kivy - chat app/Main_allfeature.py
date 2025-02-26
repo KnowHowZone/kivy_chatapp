@@ -74,6 +74,7 @@ from kivy.uix.scrollview import ScrollView
 import requests
 import os
 
+from kivy.animation import Animation
 
 
 
@@ -139,6 +140,23 @@ song_details_base_url = "https://www.jiosaavn.com/api.php?__call=song.getDetails
 playlist_details_base_url = "https://www.jiosaavn.com/api.php?__call=webapi.get&token={}&type=playlist&p=1&n=20&includeMetaTags=0&ctx=web6dot0&api_version=4&_format=json&_marker=0"
 
 
+KV = Builder.load_file("splash.kv")
+
+class SplashScreen(Screen):
+    def on_enter(self):
+        # Animate fade-in effect
+        anim = Animation(opacity=1, duration=1.5)
+        anim.start(self.ids.logo)
+
+        # Transition to main screen after 3 seconds
+        Clock.schedule_once(self.switch_to_main, 3)
+    
+    def switch_to_main(self, dt):
+        self.manager.current = "main"
+    pass
+
+class MainScreen(Screen):
+    pass
 
 KV = '''
 
@@ -919,7 +937,9 @@ class Test(MDApp):
     selected_message = None 
 
     def build(self):
-        
+        sm = ScreenManager()
+        sm.add_widget(SplashScreen(name="splash"))
+        sm.add_widget(MainScreen(name="main"))
         self.file_manager = MDFileManager(exit_manager=self.file_manager_close, select_path=self.upload_file)
         
         self.manager_open = False
@@ -943,7 +963,8 @@ class Test(MDApp):
         self.typing_timer = None
         self.title = "Ghost Comm - Silent.Stealthy.Secret" 
         self.icon = "topbarlogo.png"
-        return Builder.load_string(KV)
+        return sm 
+        # return Builder.load_string(KV)
     
     
     def change_screen(self, screen, *args):
